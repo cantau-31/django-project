@@ -37,10 +37,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # API DRF - partie Julien
+    "rest_framework",
     # App tickets (Category/Ticket) - partie Steven
     "tickets",
-    # NOTE pour Rima : ajouter ici "rest_framework" et
-    # "rest_framework_simplejwt" quand tu configures l'API + JWT.
+    # NOTE pour Rima : ajouter ici "rest_framework_simplejwt"
+    # quand tu configures JWT.
 ]
 
 MIDDLEWARE = [
