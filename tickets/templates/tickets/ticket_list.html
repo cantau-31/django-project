@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des tickets</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            color: #222;
+        }
+        h1 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        .ticket {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .ticket h2 {
+            margin: 0 0 8px 0;
+            font-size: 1.1em;
+        }
+        .priority {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+            color: #fff;
+        }
+        .priority-HIGH { background: #d9534f; }
+        .priority-MEDIUM { background: #f0ad4e; }
+        .priority-LOW { background: #5cb85c; }
+        .meta {
+            color: #555;
+            font-size: 0.9em;
+        }
+        .empty {
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tickets</h1>
+
+    {% for ticket in tickets %}
+        <div class="ticket">
+            <h2>
+                <span class="priority priority-{{ ticket.priority }}">{{ ticket.priority }}</span>
+                {{ ticket.title }}
+            </h2>
+            <p>{{ ticket.description }}</p>
+            <p class="meta">
+                Catégorie : {{ ticket.category.name }} &middot;
+                Statut : {{ ticket.status }} &middot;
+                Créé le {{ ticket.created_at|date:"d/m/Y H:i" }}
+            </p>
+        </div>
+    {% empty %}
+        <p class="empty">Aucun ticket pour le moment.</p>
+    {% endfor %}
+</body>
+</html>
