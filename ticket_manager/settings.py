@@ -39,11 +39,17 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # API DRF - partie Julien
     "rest_framework",
+    "rest_framework_simplejwt",
     # App tickets (Category/Ticket) - partie Steven
     "tickets",
-    # NOTE pour Rima : ajouter ici "rest_framework_simplejwt"
-    # quand tu configures JWT.
 ]
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+    ),
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
